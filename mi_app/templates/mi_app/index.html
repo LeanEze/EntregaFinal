@@ -1,39 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'mi_app/padre.html' %}
 
-<head>
-   
-  {% load static %} <!--carga el static utilizado en el href--> 
-  
-  <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'mi_app/css/bootstrap.css' %}" rel="stylesheet" />
+<!--contenido-->
+{%block Cuerpo%}
 
-    <title>Document</title>
-</head>
-
-<body>
-<!--barra navegacion-->
-<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-  <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-  </a>
-
-  <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-    <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-    <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
-    <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
-    <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-    <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
-  </ul>
-
-  <div class="col-md-3 text-end">
-    <button type="button" class="btn btn-outline-primary me-2">Login</button>
-    <button type="button" class="btn btn-primary">Sign-up</button>
-  </div>
-
-</header>
+<!--Titulo-->
+<h1>Bienvenidos a Por Una Pata</h1>
+<style>
+  h1 {text-align: center;}
+  p {text-align: center;}
+</style>
 
 <!--noticias-->
 <div class="album py-5 bg-light">
@@ -190,19 +165,4 @@
   </div>
 </div>
 
-
-<!--contenido-->
-{%block Cuerpo%}
 {%endblock%}
-
-<!--pie de pagina-->
-<div class="container-fluid footer navbar-fixed-bottom">
-    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-    <a class="text-dark" href="https://Jamardo.com/">Leandro Jamardo</a>
-  </div>
-</div>
-
-
-
-</body>
-</html>
