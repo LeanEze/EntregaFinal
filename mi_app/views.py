@@ -62,6 +62,9 @@ def mostrar_romarubio(request):
     
     return render(request ,"mi_app/historias/romarubio.html", {}) #templete historias romarubio
 
+def mostrar_chocolate(request):
+    
+    return render(request ,"mi_app/historias/chocolate.html", {}) #templete historias chocolate
 
 
 
