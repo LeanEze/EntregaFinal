@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path,include
 from mi_app import views
-from mi_app.views import ingresar_usuario, mostrar_inicio, mostrar_formulario_adopcion, mostrar_donaciones, mostrar_transito
+from mi_app.views import ingresar_usuario, mostrar_inicio, mostrar_formulario_adopcion, mostrar_donaciones, mostrar_transito, crear_usuario
 
 
 urlpatterns = [
@@ -12,6 +12,8 @@ urlpatterns = [
     path('transitar/', mostrar_transito, name='transito'),
     path('donaciones/', mostrar_donaciones, name='donaciones'),
     path('ingresarusuario/', ingresar_usuario, name='ingresarusuario'),
+    path('crearusuario/', crear_usuario, name= 'crearusuario'),
+    
     #rutas a historias
     path('aisha/', views.mostrar_aisha, name='aisha'),
     path('anubis/', views.mostrar_anubis, name='anubis'),

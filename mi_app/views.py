@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+
 # funciones de muestra de template del header
 def mostrar_inicio(request):
     
@@ -22,12 +23,13 @@ def mostrar_donaciones(request):
 def ingresar_usuario(request):
     
     return render(request ,"mi_app/ingresarUsuario.html", {})
-
-
+ 
+def crear_usuario(request):
+        
+    return render(request ,"mi_app/crearUsuario.html", {})
 
 
 # funciones de muestra de template de historias
-
 def mostrar_aisha(request):
     
     return render(request ,"mi_app/historias/aisha.html", {}) #templete historias aisha
