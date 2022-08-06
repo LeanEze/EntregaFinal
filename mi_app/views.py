@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from mi_app.forms import adopcionFormulario
-from mi_app.models import Adopcion
+from mi_app.forms import adopcionFormulario, transitoFormulario
+from mi_app.models import Adopcion, Transito
 
 
 
@@ -17,7 +17,7 @@ def mostrar_formulario_adopcion(request):
 
 def mostrar_transito(request):
     
-    return render(request ,"mi_app/transitar.html", {}) #templete transito
+    return render(request ,"mi_app/formularioTransito.html", {}) #templete transito
 
 
 def mostrar_donaciones(request):
@@ -104,7 +104,7 @@ def adopcion_formulario(request):
             informacion = miFormulario.cleaned_data
 
 
-            adopcion = Adopcion (nombre=informacion['nombre'], apellido=informacion['apellido'], edad=informacion['edad'],telefono=informacion['telefono'],
+            adopcion = Adopcion (nombre=informacion['nombre'], apellido=informacion['apellido'], edad=informacion['edad'], email=informacion['email'],telefono=informacion['telefono'],
             cantidadIntegrantesFamilia=informacion['cantidadIntegrantesFamilia'], tamañoAnimal=informacion['tamañoAnimal'], animalInteresado=informacion['animalInteresado'], 
             localidad=informacion['localidad'], direccion=informacion['direccion'], tamañoVivienda=informacion['tamañoVivienda'], patioVivienda=informacion['patioVivienda'])
            
@@ -121,6 +121,41 @@ def adopcion_formulario(request):
 
 
     
-def respuesta_formulario(request):
+def respuesta_adopcion(request):
     
-    return render(request ,"mi_app/formularios/respuestaFormulario.html", {})
+    return render(request ,"mi_app/formularios/respuestaAdopcion.html", {})
+
+
+def transito_formulario(request):
+    
+    if  request.method == "POST":
+        
+        miFormulario = transitoFormulario(request.POST)
+        
+        
+        print(miFormulario)
+
+        if miFormulario.is_valid:
+           
+            informacion = miFormulario.cleaned_data
+
+
+            transito = Transito (nombre=informacion['nombre'], apellido=informacion['apellido'], edad=informacion['edad'],email=informacion['email'],telefono=informacion['telefono'],
+            perros=informacion['perros'], gatos=informacion['gatos'], niños=informacion['niños'], 
+            localidad=informacion['localidad'], direccion=informacion['direccion'], hambientes=informacion['hambientes'], patio=informacion['patio'])
+           
+            transito.save()
+
+            return render(request, "mi_app/formularios/respuestaTransito.html",{})
+
+   
+    else:
+        
+        miFormulario = transitoFormulario()
+   
+    return render(request, "mi_app/formularios/formularioTransito.html",{"miFormulario": miFormulario})
+
+
+def respuesta_transito(request):
+    
+    return render(request ,"mi_app/formularios/respuestaTransito.html", {})

@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.urls import path,include
 from mi_app import views
-from mi_app.views import adopcion_formulario, ingresar_usuario, mostrar_inicio, mostrar_donaciones, mostrar_transito, crear_usuario, respuesta_formulario,
+from mi_app.views import adopcion_formulario, ingresar_usuario, mostrar_inicio, mostrar_donaciones, crear_usuario, respuesta_adopcion, respuesta_transito, transito_formulario
 from mi_app.views import password_reset, password_reset_confirm, password_reset_done, password_reset_complete
 
 
@@ -11,14 +11,15 @@ urlpatterns = [
     #rutas header
     path('inicio/', mostrar_inicio, name='inicio'),
     path('adoptar/', adopcion_formulario, name='adoptar'),
-    path('transitar/', mostrar_transito, name='transito'),
+    path('transitar/', transito_formulario, name='transito'),
     path('donaciones/', mostrar_donaciones, name='donaciones'),
     path('ingresarusuario/', ingresar_usuario, name='ingresarusuario'),
     path('crearusuario/', crear_usuario, name= 'crearusuario'),
   
     
     #rutas de formularios
-    path('respuestaformulario/', respuesta_formulario, name='respuestaformulario'),
+    path('respuestaAdopcion/', respuesta_adopcion, name='respuestaAdopcion'),
+    path('respuestatransito/', respuesta_transito, name='respuestaTransito'),
     
     
     #rutas a historias
