@@ -1,7 +1,9 @@
 from django.contrib import admin
 from django.urls import path,include
 from mi_app import views
-from mi_app.views import adopcion_formulario, ingresar_usuario, mostrar_inicio, mostrar_donaciones, mostrar_transito, crear_usuario, respuesta_formulario
+from mi_app.views import adopcion_formulario, ingresar_usuario, mostrar_inicio, mostrar_donaciones, mostrar_transito, crear_usuario, respuesta_formulario,
+from mi_app.views import password_reset, password_reset_confirm, password_reset_done, password_reset_complete
+
 
 
 urlpatterns = [
@@ -13,6 +15,7 @@ urlpatterns = [
     path('donaciones/', mostrar_donaciones, name='donaciones'),
     path('ingresarusuario/', ingresar_usuario, name='ingresarusuario'),
     path('crearusuario/', crear_usuario, name= 'crearusuario'),
+  
     
     #rutas de formularios
     path('respuestaformulario/', respuesta_formulario, name='respuestaformulario'),
@@ -27,5 +30,14 @@ urlpatterns = [
     path('osito/', views.mostrar_osito, name='osito'),
     path('pantufla/', views.mostrar_pantufla, name='pantufla'),
     path('romarubio/', views.mostrar_romarubio, name='romarubio'),
-    path('chocolate/', views.mostrar_chocolate, name='chocolate'),
+    
+    #passwordResetPaths
+    path('passwordReset/', views.password_reset, name='password_reset'), 
+
+    path('passwordResetDone/', password_reset_done, name='password_reset_done'),
+
+    #path('reset/<uidb64>[0-9A-Za-z_\-]/<token>', password_reset_confirm, name='password_reset_confirm'),
+
+    #path('reset/done', password_reset_complete, name='password_reset_complete'),
+
 ]

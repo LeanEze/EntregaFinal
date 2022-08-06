@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-
 from mi_app.forms import adopcionFormulario
 from mi_app.models import Adopcion
+
+
 
 
 # funciones de muestra de template del header
@@ -70,6 +71,22 @@ def mostrar_chocolate(request):
     
     return render(request ,"mi_app/historias/chocolate.html", {}) #templete historias chocolate
 
+#funciones de restablecimiento de contraseña
+
+def password_reset(request):
+    return render(request, "mi_app/passwordReset.html", {})
+
+def password_reset_email(request):
+    return render(request, "mi_app/passwordResetEmail.html", {})
+
+def password_reset_confirm(request):
+    return render(request, "mi_app/passwordResetConfirm.html", {})
+
+def password_reset_done(request):
+    return render(request, "mi_app/passwordResetDone.html", {})
+
+def password_reset_complete(request):
+    return render(request, "mi_app/passwordResetComplete.html", {})
 
 #vista formularios
 
