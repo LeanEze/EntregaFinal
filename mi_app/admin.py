@@ -1,3 +1,4 @@
 from django.contrib import admin
+from mi_app.models import Adopcion
 
-# Register your models here.
+admin.site.register(Adopcion)

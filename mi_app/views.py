@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from mi_app.forms import adopcionFormulario
+from mi_app.models import Adopcion
+
 
 # funciones de muestra de template del header
 def mostrar_inicio(request):
@@ -30,6 +33,7 @@ def crear_usuario(request):
 
 
 # funciones de muestra de template de historias
+
 def mostrar_aisha(request):
     
     return render(request ,"mi_app/historias/aisha.html", {}) #templete historias aisha
@@ -67,4 +71,39 @@ def mostrar_chocolate(request):
     return render(request ,"mi_app/historias/chocolate.html", {}) #templete historias chocolate
 
 
+#vista formularios
 
+def adopcion_formulario(request):
+    
+    if  request.method == "POST":
+        
+        miFormulario = adopcionFormulario(request.POST)
+        
+        
+        print(miFormulario)
+
+        if miFormulario.is_valid:
+           
+            informacion = miFormulario.cleaned_data
+
+
+            adopcion = Adopcion (nombre=informacion['nombre'], apellido=informacion['apellido'], edad=informacion['edad'],telefono=informacion['telefono'],
+            cantidadIntegrantesFamilia=informacion['cantidadIntegrantesFamilia'], tamañoAnimal=informacion['tamañoAnimal'], animalInteresado=informacion['animalInteresado'], 
+            localidad=informacion['localidad'], direccion=informacion['direccion'], tamañoVivienda=informacion['tamañoVivienda'], patioVivienda=informacion['patioVivienda'])
+           
+            adopcion.save()
+
+            return render(request, "mi_app/formularios/respuestaFormulario.html",{})
+
+   
+    else:
+        
+        miFormulario = adopcionFormulario()
+   
+    return render(request, "mi_app/formularios/formularioAdopcion.html",{"miFormulario": miFormulario})
+
+
+    
+def respuesta_formulario(request):
+    
+    return render(request ,"mi_app/formularios/respuestaFormulario.html", {})
