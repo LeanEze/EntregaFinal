@@ -33,21 +33,3 @@ class transitoFormulario(forms.Form):
     hambientes = forms.IntegerField()
     patio = forms.CharField(max_length=2)
 
-
-class RegistroForm(UserCreationForm):
-
-	class Meta:
-		model = User
-		fields = [
-				'username',
-				'first_name',
-				'last_name',
-				'email',
-			]
-		labels = {
-				'username': 'Nombre de usuario',
-				'first_name': 'Nombre',
-				'last_name': 'Apellidos',
-				'email': 'Correo',
-		}
-

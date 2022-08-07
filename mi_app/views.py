@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from mi_app.forms import adopcionFormulario, transitoFormulario
-from mi_app.models import Adopcion, Transito
-
+from mi_app.models import Adopcion, Transito 
 
 
 
@@ -71,7 +70,6 @@ def mostrar_chocolate(request):
     
     return render(request ,"mi_app/historias/chocolate.html", {}) #templete historias chocolate
 
-
 #funciones de restablecimiento de contraseña
 
 def password_reset(request):
@@ -88,6 +86,7 @@ def password_reset_done(request):
 
 def password_reset_complete(request):
     return render(request, "mi_app/passwordResetComplete.html", {})
+
 
 #vista formularios
 
@@ -160,3 +159,5 @@ def transito_formulario(request):
 def respuesta_transito(request):
     
     return render(request ,"mi_app/formularios/respuestaTransito.html", {})
+
+
