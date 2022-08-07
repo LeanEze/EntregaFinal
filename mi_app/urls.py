@@ -4,6 +4,8 @@ from mi_app import views
 from mi_app.views import adopcion_formulario, ingresar_usuario, mostrar_inicio, mostrar_donaciones, crear_usuario, respuesta_adopcion, respuesta_transito, transito_formulario
 
 
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     #rutas header
@@ -30,6 +32,5 @@ urlpatterns = [
     path('pantufla/', views.mostrar_pantufla, name='pantufla'),
     path('romarubio/', views.mostrar_romarubio, name='romarubio'),
     
-
 
 ]
