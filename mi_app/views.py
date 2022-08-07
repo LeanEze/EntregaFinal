@@ -71,6 +71,7 @@ def mostrar_chocolate(request):
     
     return render(request ,"mi_app/historias/chocolate.html", {}) #templete historias chocolate
 
+
 #funciones de restablecimiento de contraseña
 
 def password_reset(request):
