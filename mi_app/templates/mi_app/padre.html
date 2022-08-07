@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   
+  {% load static %} <!--carga el static utilizado en el href--> 
+  
+  <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'mi_app/css/bootstrap.css' %}" rel="stylesheet" />
+    <style>
+      .hola{
+          width: 300px !important;
+      }
+      .entrada{
+          width: 300px !important;
+          margin: 0 auto !important;
+      }
+      .miImagen{
+        position: absolute;
+      }
+
+      .form{
+        justify-content: center;
+        display: flex;
+        margin: auto;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        line-height: 30px;
+      }
+      
+      .form2{
+        justify-content: center;
+        display: flex;
+        margin: auto;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        line-height: 30px;
+      }
+      
+      .margen{
+        flex-direction: column;
+        margin: 0 auto;
+        justify-content: center;
+        display: flex;
+        width: 1600px;
+        align-items: center;
+        text-align: center;
+        padding-bottom: 50px;
+      }
+      
+  </style>
+    <title>X Una Pata</title>
+</head>
+
+<body>
+<!--barra navegacion-->
+<header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+  <img class="miImagen" src="https://www.purina-latam.com/sites/g/files/auxxlc391/files/styles/kraken_generic_max_width_240/public/2020-11/purina-adopta-perros-en-adopci%C3%B3n.png?itok=tD2E0Rq1" width="100" height="80" alt="">
+  <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+  </a>
+
+  <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+    <li><a href="http://127.0.0.1:8000/inicio/" class="nav-link px-2 link-dark">Inicio</a></li>
+    <li><a href="http://127.0.0.1:8000/adoptar/" class="nav-link px-2 link-dark">Adoptar</a></li>
+    <li><a href="http://127.0.0.1:8000/transitar" class="nav-link px-2 link-dark">Transitar</a></li>
+    <li><a href="http://127.0.0.1:8000/donaciones/" class="nav-link px-2 link-dark">Donaciones</a></li>
+  </ul>
+
+  <div class="col-md-3 text-end">
+    <a href="http://127.0.0.1:8000/ingresarusuario/">
+        <button type="button" class="btn btn-outline-primary me-2">ingresar</button>
+    </a>
+    <a href="http://127.0.0.1:8000/crearusuario/">
+    <button type="button" class="btn btn-primary">crear usuario</button>
+    </a>
+</div>
+
+</header>
+
+
+<!--contenido-->
+{%block Cuerpo%}
+
+{%endblock%}
+
+
+<!--pie de pagina-->
+<div class="container">
+  <footer class="py-3 my-4">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Inicio</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Features</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">Pricing</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">FAQs</a></li>
+      <li class="nav-item"><a href="#" class="nav-link px-2 text-muted">About</a></li>
+    </ul>
+    <p class="text-center text-muted">© 2022 Company, Inc</p>
+  </footer>
+</div>
+
+
+
+</body>
+</html>

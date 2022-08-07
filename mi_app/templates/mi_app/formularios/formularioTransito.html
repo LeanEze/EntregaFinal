@@ -1,0 +1,44 @@
+{% extends 'mi_app/padre.html' %}
+
+{%block Cuerpo%}
+
+<div class="margen" >
+    <img class="d-block mx-auto mb-4" src="https://www.purina-latam.com/sites/g/files/auxxlc391/files/styles/kraken_generic_max_width_240/public/2020-11/purina-adopta-perros-en-adopci%C3%B3n.png?itok=tD2E0Rq1" alt="" width="140" height="140">
+    <h2 class="margen1">Formulario de Transito</h2>
+    <p class="lead"><b>Es necesario que el formulario sea contestado por el o la RESPONSABLE DEL HOGAR y que todas las preguntas sean respondidas, de lo contrario su formulario no será considerado. También es necesario indicar la dirección exacta del hogar, de lo contrario el formulario también será descartado. 
+    
+        Les pedimos por favor que completen el formulario de la manera más honesta, responsable y detallada posible. Cuanta más información contengan las respuestas, mejor!
+        
+        Por favor, únicamente completar el formulario si ya han considerado todos los compromisos, tiempo, dinero y paciencia que requiere transitar un animal! Si aún no están decididos sobre transitar por favor NO completen el formulario.
+        
+        Los datos a llenar son usados únicamente con fines de la organización, ningún dato será publicado ni
+        compartido. Gracias !!</b></p>
+        
+</div> 
+
+
+<div class="form2">
+
+    <form action="" method="POST">{% csrf_token %}
+    
+        <ul>
+
+            <table>
+        
+                {{ miFormulario.as_table }}
+        
+            
+            </table>
+        
+            <input type="submit", value="Enviar">
+        
+        </ul>  
+        
+    </form>
+    <h5>*Atencion: En el formulario donde se consulta si hay otros animales y si el inmueble tiene patio, contestar unicamente con "si" o "no".</h5>
+
+</div>
+
+
+
+{% endblock %}
