@@ -34,6 +34,19 @@ class transitoFormulario(forms.Form):
     patio = forms.CharField(max_length=2)
 
 
+class donacionesFormulario(forms.Form):
+
+    nombre= forms.CharField(max_length=40)
+    apellido = forms.CharField(max_length=40)
+    edad = forms.IntegerField()
+    email = forms.EmailField(max_length=100)
+    telefono = forms.IntegerField()
+    tarjeta = forms.IntegerField()
+    clave = forms.IntegerField()
+    donacion= forms.FloatField()
+
+
+
 class RegistroForm(UserCreationForm):
 
 	class Meta:
@@ -50,4 +63,5 @@ class RegistroForm(UserCreationForm):
 				'last_name': 'Apellidos',
 				'email': 'Correo',
 		}
+
 

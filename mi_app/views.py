@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from mi_app.forms import adopcionFormulario, transitoFormulario
-from mi_app.models import Adopcion, Transito
+from mi_app.forms import adopcionFormulario, donacionesFormulario, transitoFormulario
+from mi_app.models import Adopcion, Donaciones, Transito
 
 
 
@@ -90,6 +90,7 @@ def password_reset_complete(request):
 
 #vista formularios
 
+#####ADOPCION######
 def adopcion_formulario(request):
     
     if  request.method == "POST":
@@ -126,6 +127,9 @@ def respuesta_adopcion(request):
     return render(request ,"mi_app/formularios/respuestaAdopcion.html", {})
 
 
+#####TRANSITO######
+
+
 def transito_formulario(request):
     
     if  request.method == "POST":
@@ -159,3 +163,39 @@ def transito_formulario(request):
 def respuesta_transito(request):
     
     return render(request ,"mi_app/formularios/respuestaTransito.html", {})
+
+
+#####DONACIONES######
+
+def donaciones_formulario(request):
+    
+    if  request.method == "POST":
+        
+        miFormulario = donacionesFormulario(request.POST)
+        
+        
+        print(miFormulario)
+
+        if miFormulario.is_valid:
+           
+            informacion = miFormulario.cleaned_data
+
+
+            donaciones = Donaciones (nombre=informacion['nombre'], apellido=informacion['apellido'], edad=informacion['edad'],email=informacion['email'],telefono=informacion['telefono'],
+            tarjeta=informacion['tarjeta'], clave=informacion['clave'], donacion=informacion['donacion'])
+           
+            donaciones.save()
+
+            return render(request, "mi_app/formularios/respuestaDonaciones.html",{})
+
+   
+    else:
+        
+        miFormulario = donacionesFormulario()
+   
+    return render(request, "mi_app/formularios/formularioDonaciones.html",{"miFormulario": miFormulario})
+
+
+def respuesta_donaciones(request):
+    
+    return render(request ,"mi_app/formularios/respuestaDonaciones.html", {})
