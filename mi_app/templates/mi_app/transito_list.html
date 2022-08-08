@@ -1,0 +1,45 @@
+{% extends 'mi_app/padre.html' %}
+
+{%block Cuerpo%}
+
+<div class="margen" >
+    <img class="d-block mx-auto mb-4" src="https://www.purina-latam.com/sites/g/files/auxxlc391/files/styles/kraken_generic_max_width_240/public/2020-11/purina-adopta-perros-en-adopci%C3%B3n.png?itok=tD2E0Rq1" alt="" width="140" height="140">
+    <h2 class="margen1">Transitantes Activos</h2>
+    <p class="lead"><b>Aqui podemos observar la lista de personas que presentaron formulario de transito.</b></p>
+        
+</div> 
+
+
+<div class="form2">
+
+    
+    <ul>
+        {% for transito in object_list %}
+        <li>
+        <p> <b>Nombre:</b> {{ transito.nombre}},
+         <b>Apellido:</b> {{ transito.apellido}},
+         <b>Email: </b>{{ transito.email}}</p>
+        
+        <p>
+            
+            <a href="{% url 'Detalle' transito.id %}">Ver</a>
+            <a href="{% url 'Editar' transito.id %}">Editar</a>
+            <a href="{% url 'Borrar' transito.id %}">Borrar</a>
+
+        </p>
+        </li>
+
+        {% endfor %}
+
+    </ul>
+       
+
+    
+            
+        
+    
+        
+    
+    
+</div>
+{%endblock%}
