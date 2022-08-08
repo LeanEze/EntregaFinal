@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Adopcion(models.Model):
     nombre = models.CharField(max_length=40)
     apellido = models.CharField(max_length=40)
@@ -41,6 +42,7 @@ class Transito(models.Model):
      return f"Nombre: {self.nombre} - Apellido: {self.apellido} - Edad: {self.edad} - Telefono: {self.telefono}"
 
 
+
 class Donaciones(models.Model):
 
     nombre= models.CharField(max_length=40)
@@ -55,4 +57,3 @@ class Donaciones(models.Model):
     def __str__(self):
     
      return f"Nombre: {self.nombre} - Apellido: {self.apellido} - donacion: {self.donacion} - Telefono: {self.telefono}"
-

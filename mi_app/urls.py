@@ -1,7 +1,10 @@
 from django.contrib import admin
 from django.urls import path,include
 from mi_app import views
+from mi_app.views import adopcion_formulario, ingresar_usuario, mostrar_inicio, mostrar_donaciones, crear_usuario, respuesta_adopcion, respuesta_transito, transito_formulario
+from mi_app.views import password_reset, password_reset_confirm, password_reset_done, password_reset_complete
 from mi_app.views import adopcion_formulario, donaciones_formulario, ingresar_usuario, mostrar_inicio, crear_usuario, respuesta_adopcion, respuesta_donaciones, respuesta_transito, transito_formulario
+
 
 
 
@@ -19,7 +22,8 @@ urlpatterns = [
     path('donaciones/', donaciones_formulario, name='donaciones'),
     path('ingresarusuario/', ingresar_usuario, name='ingresarusuario'),
     path('crearusuario/', crear_usuario, name= 'crearusuario'),
-  
+    path('passwordReset/', views.password_reset, name='password_reset'), 
+    path('passwordResetDone/', password_reset_done, name='password_reset_done'),
     
     #rutas de formularios
     path('respuestaAdopcion/', respuesta_adopcion, name='respuestaAdopcion'),
@@ -38,6 +42,7 @@ urlpatterns = [
     
     #CRUD Transitantes
 
+
     path('transitolist/', views.TransitoList.as_view(), name='List'),
     path(r'^detalle/(?P<pk>\d+)$', views.TransitoDetalle.as_view(), name='Detalle'),
     path(r'^nuevo$', views.TransitoCreacion.as_view(), name='Nuevo'),
@@ -45,4 +50,4 @@ urlpatterns = [
     path(r'^borrar/(?P<pk>\d+)$', views.TransitoDelete.as_view(), name='Borrar'),
 
 
-    ]   
+]

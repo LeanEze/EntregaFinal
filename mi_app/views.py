@@ -7,7 +7,6 @@ from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
 
-
 # funciones de muestra de template del header
 def mostrar_inicio(request):
     
@@ -73,7 +72,6 @@ def mostrar_chocolate(request):
     
     return render(request ,"mi_app/historias/chocolate.html", {}) #templete historias chocolate
 
-
 #funciones de restablecimiento de contraseña
 
 def password_reset(request):
@@ -90,6 +88,7 @@ def password_reset_done(request):
 
 def password_reset_complete(request):
     return render(request, "mi_app/passwordResetComplete.html", {})
+
 
 #vista formularios
 
@@ -166,6 +165,7 @@ def transito_formulario(request):
 def respuesta_transito(request):
     
     return render(request ,"mi_app/formularios/respuestaTransito.html", {})
+
 
 
 #####DONACIONES######

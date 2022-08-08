@@ -47,6 +47,7 @@ class donacionesFormulario(forms.Form):
 
 
 
+
 class RegistroForm(UserCreationForm):
 
 	class Meta:
@@ -63,5 +64,6 @@ class RegistroForm(UserCreationForm):
 				'last_name': 'Apellidos',
 				'email': 'Correo',
 		}
+
 
 
