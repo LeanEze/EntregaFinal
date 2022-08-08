@@ -2,8 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from mi_app.forms import adopcionFormulario, donacionesFormulario, transitoFormulario
 from mi_app.models import Adopcion, Donaciones, Transito
-
-
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView,UpdateView,DeleteView
+from django.urls import reverse_lazy
 
 
 # funciones de muestra de template del header
@@ -200,3 +202,38 @@ def donaciones_formulario(request):
 def respuesta_donaciones(request):
     
     return render(request ,"mi_app/formularios/respuestaDonaciones.html", {})
+
+
+
+
+#####LISTA DE TRANSITANTES POSTULADOS######
+
+
+
+class TransitoList(ListView):
+
+    model = Transito
+    Template_name = "mi_app/transito_list.html"
+
+class TransitoDetalle( DetailView):
+
+    model = Transito
+    template_name ="mi_app/transito_detalle1.html"
+
+class TransitoCreacion(CreateView):
+    
+    model = Transito
+    success_url = "/transitolist/"
+    fields = ['nombre' , 'apellido']
+
+class TransitoUpdate(UpdateView):
+
+    model = Transito
+    success_url = "/transitolist/"
+    fields = ['nombre', 'apellido']
+
+class TransitoDelete(DeleteView):
+
+    model = Transito
+    success_url = "/transitolist/"
+

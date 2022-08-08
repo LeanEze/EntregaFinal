@@ -21,9 +21,9 @@ urlpatterns = [
   
     
     #rutas de formularios
-    path('respuestaadopcion/', respuesta_adopcion, name='respuestaAdopcion'),
-    path('respuestatransito/', respuesta_transito, name='respuestaTransito'),
-    path('respuestadonaciones/', respuesta_donaciones, name='respuestaTransito'),
+    path('respuestaAdopcion/', respuesta_adopcion, name='respuestaAdopcion'),
+    path('respuestaTransito/', respuesta_transito, name='respuestaTransito'),
+    path('respuestaDonaciones/', respuesta_donaciones, name='respuestaTransito'),
     
     #rutas a historias
     path('aisha/', views.mostrar_aisha, name='aisha'),
@@ -35,5 +35,14 @@ urlpatterns = [
     path('pantufla/', views.mostrar_pantufla, name='pantufla'),
     path('romarubio/', views.mostrar_romarubio, name='romarubio'),
     
+    #CRUD Transitantes
 
-]
+    
+    path('transitolist/', views.TransitoList.as_view(), name='List'),
+    path(r'^detalle/(?P<pk>\d+)$', views.TransitoDetalle.as_view(), name='Detalle'),
+    path(r'^nuevo$', views.TransitoCreacion.as_view(), name='Nuevo'),
+    path(r'^editar/(?P<pk>\d+)$', views.TransitoUpdate.as_view(), name='Editar'),
+    path(r'^borrar/(?P<pk>\d+)$', views.TransitoDelete.as_view(), name='Borrar'),
+
+
+    ]   
