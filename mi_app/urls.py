@@ -11,6 +11,7 @@ from mi_app.views import adopcion_formulario, donaciones_formulario, ingresar_us
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('',mostrar_inicio,name='raiz'),
     #rutas header
     path('inicio/', mostrar_inicio, name='inicio'),
     path('adoptar/', adopcion_formulario, name='adoptar'),
@@ -37,7 +38,6 @@ urlpatterns = [
     
     #CRUD Transitantes
 
-    
     path('transitolist/', views.TransitoList.as_view(), name='List'),
     path(r'^detalle/(?P<pk>\d+)$', views.TransitoDetalle.as_view(), name='Detalle'),
     path(r'^nuevo$', views.TransitoCreacion.as_view(), name='Nuevo'),
