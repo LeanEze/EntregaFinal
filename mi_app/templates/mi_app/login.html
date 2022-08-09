@@ -15,7 +15,23 @@
     </form>
   </main>
     
+  <div class="form2">
+
+    <form action="" method="POST">{% csrf_token %}
+    
+        <ul>
+
+            <table>
         
+                {{ miFormulario.as_table }}
+        
+            
+            </table>
+        
+        </ul>  
+  </div>
+
+    </form>
       <form method="post">
        
         {% csrf_token %}

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from mi_app.forms import  adopcionFormulario, donacionesFormulario, loginForm, transitoFormulario
-from mi_app.models import Adopcion, Donaciones, Transito
+from mi_app.models import Adopcion, Donaciones, Transito, Login
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
@@ -253,15 +253,39 @@ class TransitoDelete(DeleteView):
 
 #LOGIN
 
-def ingresar_usuario(request):
+#def ingresar_usuario(request):
     
-    return render(request ,"mi_app/login.html", {})
+    #return render(request ,"mi_app/login.html", {})
  
 def crear_usuario(request):
         
     return render(request ,"mi_app/crearUsuario.html", {})
 
 
+def ingresar_usuario(request):
+    
+    if  request.method == "POST":
+        
+        miFormulario = loginForm(request.POST)
+        
+        
+        print(miFormulario)
+
+        if miFormulario.is_valid:
+           
+            informacion = miFormulario.cleaned_data
+
+
+            login = Login (usuario=informacion['usuario'], contraseña=informacion['contraseña'])
+           
+            login.save()
+
+            return render(request, "mi_app/login.html",{})
+    else:
+        
+        miFormulario = loginForm()
+   
+        return render(request, "mi_app/login.html",{"miFormulario": miFormulario})
 
 
 def login_request(request):
