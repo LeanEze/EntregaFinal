@@ -70,3 +70,20 @@ class loginForm(forms.Form):
     usuario = forms.CharField(max_length=10)
     contraseña = forms.CharField(max_length=10)
     
+
+class SignUpForm(UserCreationForm):
+    first_name = forms.CharField(max_length=140, required=True)
+    last_name = forms.CharField(max_length=140, required=False)
+    email = forms.EmailField(required=True)
+
+    class Meta:
+        model = User
+        fields = (
+            'username',
+            'email',
+            'first_name',
+            'last_name',
+            'password1',
+            'password2',
+        )
+    

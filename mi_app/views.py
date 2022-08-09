@@ -1,14 +1,19 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from mi_app.forms import  adopcionFormulario, donacionesFormulario, loginForm, transitoFormulario
 from mi_app.models import Adopcion, Donaciones, Transito, Login
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout,authenticate
 from django.contrib.auth.views import LoginView, LogoutView
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, authenticate
+from django.views.generic import CreateView, TemplateView
+from .models import Perfil
+from .forms import SignUpForm
 
 
 
@@ -33,9 +38,9 @@ def mostrar_nosotros(request):
     
     return render(request ,"mi_app/nosotros.html", {})
 #
-def ingresar_usuario(request):
+#def ingresar_usuario(request):
     
-    return render(request ,"mi_app/ingresarUsuario.html", {})
+    #return render(request ,"mi_app/ingresarUsuario.html", {})
  
 def crear_usuario(request):
         
@@ -262,6 +267,7 @@ def crear_usuario(request):
     return render(request ,"mi_app/crearUsuario.html", {})
 
 
+
 def ingresar_usuario(request):
     
     if  request.method == "POST":
@@ -317,4 +323,27 @@ def login_request(request):
     return render(request,  "mi_app/login.html", {'form':form})
 
 
+
+class SignUpView(CreateView):
+    model = Perfil
+    form_class = SignUpForm
+
+    def form_valid(self, form):
+        '''
+        '''
+        form.save()
+        usuario = form.cleaned_data.get('username')
+        password = form.cleaned_data.get('password1')
+        usuario = authenticate(username=usuario, password=password)
+        login(self.request, usuario)
+        return redirect('/')
+
+class BienvenidaView(TemplateView):
+   template_name = 'bienvenida.html'
+   
+class SignInView(LoginView):
+    template_name = 'perfiles/iniciar_sesion.html'
+    
+class SignOutView(LogoutView):
+    pass
 

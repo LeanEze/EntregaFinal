@@ -4,6 +4,7 @@ from mi_app import views
 from mi_app.views import adopcion_formulario, mostrar_inicio, mostrar_nosotros, respuesta_adopcion, respuesta_transito, transito_formulario
 from mi_app.views import password_reset_done
 from mi_app.views import adopcion_formulario, donaciones_formulario, ingresar_usuario, mostrar_inicio, crear_usuario, respuesta_adopcion, respuesta_donaciones, respuesta_transito, transito_formulario
+from mi_app.views import BienvenidaView,SignUpView, SignInView, SignOutView
 
 
 
@@ -55,6 +56,9 @@ urlpatterns = [
     path('passwordResetDone/', password_reset_done, name='password_reset_done'),
     
     path('login/',views.login_request, name='Login'),
-
-
+    
+    path('^', BienvenidaView.as_view(), name='bienvenida'),
+    path('^registrate/', SignUpView.as_view(), name='sign_up'),
+    path('^incia-sesion/', SignInView.as_view(), name='sign_in'),
+    path('^cerrar-sesion/', SignOutView.as_view(), name='sign_out'),
 ]
