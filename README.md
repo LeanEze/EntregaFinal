@@ -1,8 +1,8 @@
 # Entrega Final - Jamardo Leandro
 
-    Casos de Prueba subido a drive: https://docs.google.com/spreadsheets/d/1wohcvRlL2IZVDLkYkIk9TTfMBMODlEZU/edit?usp=sharing&ouid=112502430981329478524&rtpof=true&sd=true
+Casos de Prueba subido a drive: https://docs.google.com/spreadsheets/d/1wohcvRlL2IZVDLkYkIk9TTfMBMODlEZU/edit?usp=sharing&ouid=112502430981329478524&rtpof=true&sd=true
 
-
+Video de muestra del trabajo: https://drive.google.com/file/d/1LTaUcvT2j4wKKYdyp8X8N22aX8ri3qBm/view?usp=sharing
 
 
 Esta aplicacion permite ingresar a un sitio web donde se pueden realizar las siguientes funciones:
@@ -27,7 +27,10 @@ Ejecucion del programa
 
 4. Luego de correr el sevidor proporcionara la ruta de la aplicacion en la terminal. Utilizarla en un navegador web.
 
+
+
 Contenido de la pagina web
+
 1. Una vez ingresado al inicio de la pagina web se visualiza en la parte superior las rutas para acceder a las adopciones, transito y donaciones. Estos son formularios para completar con datos personales.
     En la parte superior derecha se ubican los botones para el ingreso y la creación de un usuario.
 

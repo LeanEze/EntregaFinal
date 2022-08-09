@@ -3,7 +3,8 @@ from django.urls import path,include
 from mi_app import views
 from mi_app.views import adopcion_formulario, mostrar_inicio, mostrar_nosotros, respuesta_adopcion, respuesta_transito, transito_formulario
 from mi_app.views import password_reset_done
-from mi_app.views import adopcion_formulario, donaciones_formulario, ingresar_usuario, mostrar_inicio, crear_usuario, respuesta_adopcion, respuesta_donaciones, respuesta_transito, transito_formulario
+from mi_app.views import adopcion_formulario, donaciones_formulario, mostrar_inicio, crear_usuario, respuesta_adopcion, respuesta_donaciones, respuesta_transito, transito_formulario
+
 
 
 
@@ -17,7 +18,6 @@ urlpatterns = [
     path('adoptar/', adopcion_formulario, name='adoptar'),
     path('transitar/', transito_formulario, name='transito'),
     path('donaciones/', donaciones_formulario, name='donaciones'),
-    path('ingresarusuario/', ingresar_usuario, name='ingresarusuario'),
     path('crearusuario/', crear_usuario, name= 'crearusuario'),
     path('passwordReset/', views.password_reset, name='password_reset'), 
     path('passwordResetDone/', password_reset_done, name='password_reset_done'),
@@ -49,12 +49,20 @@ urlpatterns = [
 
 
     #Login
-    #path('ingresarusuario/', ingresar_usuario, name='ingresarusuario'),
-    path('crearusuario/', crear_usuario, name= 'crearusuario'),
-    path('passwordReset/', views.password_reset, name='password_reset'), 
-    path('passwordResetDone/', password_reset_done, name='password_reset_done'),
-    
     path('login/',views.login_request, name='Login'),
+    path('passwordReset/', views.password_reset, name='password_reset'), 
+    
+    
+    #CrearUsuario
+
+    path('crearusuario/', crear_usuario, name= 'crearusuario'),
+    path("login" , views.login_request, name = "login"), 
+    path ("register" , views.register, name = "Register"), 
+
+
+
 
 
 ]
+    
+

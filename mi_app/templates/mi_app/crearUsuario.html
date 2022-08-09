@@ -4,66 +4,37 @@
 <body class="text-center">
    
     <main class="form-signin w-100 m-auto">
-      <form>
+    
         <img class="mb-4" src="https://www.purina-latam.com/sites/g/files/auxxlc391/files/styles/kraken_generic_max_width_240/public/2020-11/purina-adopta-perros-en-adopci%C3%B3n.png?itok=tD2E0Rq1" alt="" width="120" height="100">
         <h1 class="h3 mb-3 fw-normal">Crear Usuario</h1>
 
-        <div class="form-floating entrada">
-            <div class="col-md-10 col-md-offset-2">
-                <div class="form-group">
-                    <label>Nombre</label>
-                    <input class="form-control" type="text" name="first_name">
-                </div>
-            </div>
-        </div>
-
-        </div>
-        <div class="form-floating entrada">
-            <div class="col-md-10 col-md-offset-2">
-                <div class="form-group">
-                    <label >Apellidos</label>
-                    <input class="form-control" type="text" name="last_name">
-                </div>
-            </div>
-        </div>
-        <div class="form-floating entrada">
-            <div class="col-md-10 col-md-offset-2">
-                <div class="form-group">
-                    <label >Email</label>
-                    <input class="form-control" type="text" name="email">
-                </div>
-            </div>
-        </div>
-        <div class="form-floating entrada">
-            <div class="col-md-10 col-md-offset-2">
-                <div class="form-group">
-                    <label >Contraseña</label>
-                    <input class="form-control" type="password" name="password1">
-                </div>
-            </div>
-        </div>
-        <div class="form-floating entrada">
-            <div class="col-md-10 col-md-offset-2">
-                <div class="form-group">
-                    <label >Confirmar contraseña</label>
-                    <input class="form-control" type="password" name="password2">
-                </div>
-            </div>
-        </div>
         
-            <div class="col-md-10 col-md-offset-2">
-                <div class="form-group">
-                    <a href="http://127.0.0.1:8000/inicio/">
-                        <button type="button" class="btn btn-primary" type="submit">Guardar</button>
-                    </a>
+        
+        <div class="col-md-10 col-md-offset-2"></div>
+            
+            <form action="" method= "POST">{% csrf_token %}
+             
+                
+                
+
+                    <table>
+            
+                        {{form.as_p}}
                     
-                </div>
-            </div>
-        </div>
-        
-            <p class="mt-5 mb-3 text-muted">© 2010–2022</p>
+                    </table>
+                    
 
-        </form>
+                    
+                    <input type="submit", value="Crear Usuario">
+            
+                
+            
+            </form> 
+
+        
+
+    
+   
     </main>
      
 

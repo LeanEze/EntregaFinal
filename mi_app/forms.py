@@ -70,3 +70,14 @@ class loginForm(forms.Form):
     usuario = forms.CharField(max_length=10)
     contraseña = forms.CharField(max_length=10)
     
+
+class UserRegisterForm (UserCreationForm): 
+    username = forms.CharField(max_length=10)
+    email = forms.EmailField ()
+    password1 = forms.CharField(label="contraseña", widget=forms.PasswordInput)
+    password2 = forms.CharField(label= "Repetir la contraseña", widget=forms.PasswordInput) 
+
+    class Meta: 
+      model = User 
+      fields = ["username", "email", "password1", "password2"]
+      help_texts = {k:"" for k in fields}

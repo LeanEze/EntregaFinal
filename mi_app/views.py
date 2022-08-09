@@ -1,14 +1,17 @@
+from urllib import request
 from django.shortcuts import render
-from django.http import HttpResponse
-from mi_app.forms import  adopcionFormulario, donacionesFormulario, loginForm, transitoFormulario
-from mi_app.models import Adopcion, Donaciones, Transito, Login
+from django.http import HttpResponse, HttpResponseRedirect
+from mi_app.forms import  RegistroForm, UserRegisterForm, adopcionFormulario, donacionesFormulario, transitoFormulario
+from mi_app.models import Adopcion, Donaciones, Transito
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, logout,authenticate
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.views import LoginView, LogoutView
+from django.shortcuts import render, redirect
+from django.contrib.auth import login, logout, authenticate
+
 
 
 
@@ -33,9 +36,9 @@ def mostrar_nosotros(request):
     
     return render(request ,"mi_app/nosotros.html", {})
 #
-def ingresar_usuario(request):
+#def ingresar_usuario(request):
     
-    return render(request ,"mi_app/ingresarUsuario.html", {})
+    #return render(request ,"mi_app/ingresarUsuario.html", {})
  
 def crear_usuario(request):
         
@@ -124,7 +127,7 @@ def adopcion_formulario(request):
            
             adopcion.save()
 
-            return render(request, "mi_app/formularios/respuestaFormulario.html",{})
+            return render(request, "mi_app/formularios/respuestaAdopcion.html",{})
 
    
     else:
@@ -253,39 +256,17 @@ class TransitoDelete(DeleteView):
 
 #LOGIN
 
-#def ingresar_usuario(request):
+def ingresar_usuario(request):
     
-    #return render(request ,"mi_app/login.html", {})
+    return render(request ,"mi_app/login.html", {})
  
 def crear_usuario(request):
         
     return render(request ,"mi_app/crearUsuario.html", {})
 
 
-def ingresar_usuario(request):
-    
-    if  request.method == "POST":
-        
-        miFormulario = loginForm(request.POST)
-        
-        
-        print(miFormulario)
-
-        if miFormulario.is_valid:
-           
-            informacion = miFormulario.cleaned_data
 
 
-            login = Login (usuario=informacion['usuario'], contraseña=informacion['contraseña'])
-           
-            login.save()
-
-            return render(request, "mi_app/login.html",{})
-    else:
-        
-        miFormulario = loginForm()
-   
-        return render(request, "mi_app/login.html",{"miFormulario": miFormulario})
 
 
 def login_request(request):
@@ -295,16 +276,15 @@ def login_request(request):
         form = AuthenticationForm(request, data = request.POST)
 
         if form.is_valid():
-            usuario = form.cleaned_data.get('username')
+            user = form.cleaned_data.get('username')
             contraseña = form.cleaned_data.get('password')
 
-            user = authenticate(username=usuario, password=contraseña)
+            user = authenticate(username=user, password=contraseña)
 
-            if user is not None:
-                
+            if user is not None:                
                 login(request,user)
 
-                return render(request, "mi_app/login.html", {"mensaje":f"Bienvenido{usuario}"})
+                return render(request, "mi_app/index.html", {"mensaje":f"Bienvenido{user}"})
             else:
                
                 return render(request,  "mi_app/login.html", {"mensaje":"Error, datos incorrectos"})
@@ -314,7 +294,23 @@ def login_request(request):
     
     form = AuthenticationForm()
    
-    return render(request,  "mi_app/login.html", {'form':form})
+    return render(request, "mi_app/login.html", {'form':form})
 
 
 
+
+
+def register(request):
+    
+    if request.method == 'POST': 
+        form = RegistroForm(request.POST)
+    
+        if form.is_valid():            
+            username = form.cleaned_data ["username"]
+            form.save()
+            return render (request, "mi_app/crearUsuario.html",{"mensaje":f"{username}, Usuario Creado :)"})
+    
+    else: 
+        form = RegistroForm()
+       
+    return render (request, "mi_app/crearUsuario.html" , {"form" : form})
