@@ -27,5 +27,13 @@ Ejecucion del programa
 
 4. Luego de correr el sevidor proporcionara la ruta de la aplicacion en la terminal. Utilizarla en un navegador web.
 
+Contenido de la pagina web
+1. Una vez ingresado al inicio de la pagina web se visualiza en la parte superior las rutas para acceder a las adopciones, transito y donaciones. Estos son formularios para completar con datos personales.
+    En la parte superior derecha se ubican los botones para el ingreso y la creación de un usuario.
+
+2. Dentro de la vista de la pagina de inicio se pueden ver los accesos a las historias de perros que ya han entrado dentro del transito y adopcion de "Por una Pata"
+
+3. En el foot de la pagina se encuentran tres botones para acceder al inicio, a la lista de transitantes postulados y a informacion personal de los creadores de "Por una Pata".
+
 
 
