@@ -66,4 +66,7 @@ class RegistroForm(UserCreationForm):
 		}
 
 
-
+class loginForm(forms.Form):
+    usuario = forms.CharField(max_length=10)
+    contraseña = forms.CharField(max_length=10)
+    

@@ -1,0 +1,50 @@
+{% extends 'mi_app/padre.html' %}
+
+
+
+{%block Cuerpo%}
+
+
+
+<body class="text-center">
+   
+  <main class="form-signin w-100 m-auto">
+    <form>
+      <img class="mb-4" src="https://www.purina-latam.com/sites/g/files/auxxlc391/files/styles/kraken_generic_max_width_240/public/2020-11/purina-adopta-perros-en-adopci%C3%B3n.png?itok=tD2E0Rq1" alt="" width="120" height="100">
+      <h1 class="h3 mb-3 fw-normal">Ingresar Usuario</h1>
+    </form>
+  </main>
+    
+        
+      <form method="post">
+       
+        {% csrf_token %}
+        {{ form.as_p}}
+
+       <input type="submit" value="Enviar"/>
+
+       <div class="checkbox mb-3">
+        <label>
+          <input type="checkbox" value="remember-me"> Recordar Cuenta
+        </label>
+      </div>
+      
+      <div class="form-group">
+        <a href="http://127.0.0.1:8000/passwordReset/">Olvidé mi contraseña</a>
+
+      </div>
+       <p>
+           <a href="{% url 'inicio' %}">Regresar</a>
+       </p>
+      
+      </form>
+           
+   
+
+  
+  
+  
+</body>
+
+
+{% endblock %}

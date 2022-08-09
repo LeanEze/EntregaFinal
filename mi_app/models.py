@@ -57,3 +57,13 @@ class Donaciones(models.Model):
     def __str__(self):
     
      return f"Nombre: {self.nombre} - Apellido: {self.apellido} - donacion: {self.donacion} - Telefono: {self.telefono}"
+
+
+class Login(models.Model):
+    usuario = models.CharField(max_length=10)
+    contraseña = models.CharField(max_length=10)
+    
+    
+    def __str__(self):
+    
+     return f"Usuario: {self.usuario} - Contraseña: {self.contraseña}"

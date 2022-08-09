@@ -1,11 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from mi_app.forms import adopcionFormulario, donacionesFormulario, transitoFormulario
+from mi_app.forms import  adopcionFormulario, donacionesFormulario, loginForm, transitoFormulario
 from mi_app.models import Adopcion, Donaciones, Transito
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, logout,authenticate
+from django.contrib.auth.views import LoginView, LogoutView
+
+
 
 # funciones de muestra de template del header
 def mostrar_inicio(request):
@@ -20,11 +25,14 @@ def mostrar_transito(request):
     
     return render(request ,"mi_app/formularioTransito.html", {}) #templete transito
 
-
 def mostrar_donaciones(request):
     
     return render(request ,"mi_app/donaciones.html", {}) #templete Donaciones
 
+def mostrar_nosotros(request):
+    
+    return render(request ,"mi_app/nosotros.html", {})
+#
 def ingresar_usuario(request):
     
     return render(request ,"mi_app/ingresarUsuario.html", {})
@@ -71,6 +79,9 @@ def mostrar_romarubio(request):
 def mostrar_chocolate(request):
     
     return render(request ,"mi_app/historias/chocolate.html", {}) #templete historias chocolate
+
+
+
 
 #funciones de restablecimiento de contraseña
 
@@ -236,4 +247,50 @@ class TransitoDelete(DeleteView):
 
     model = Transito
     success_url = "/transitolist/"
+
+
+###### CRUD USUARIO Y AVATAR ######
+
+#LOGIN
+
+def ingresar_usuario(request):
+    
+    return render(request ,"mi_app/login.html", {})
+ 
+def crear_usuario(request):
+        
+    return render(request ,"mi_app/crearUsuario.html", {})
+
+
+
+
+def login_request(request):
+   
+    if request.method == 'POST':
+       
+        form = AuthenticationForm(request, data = request.POST)
+
+        if form.is_valid():
+            usuario = form.cleaned_data.get('username')
+            contraseña = form.cleaned_data.get('password')
+
+            user = authenticate(username=usuario, password=contraseña)
+
+            if user is not None:
+                
+                login(request,user)
+
+                return render(request, "mi_app/login.html", {"mensaje":f"Bienvenido{usuario}"})
+            else:
+               
+                return render(request,  "mi_app/login.html", {"mensaje":"Error, datos incorrectos"})
+        else:
+            
+            return render(request,  "mi_app/login.html", {"mensaje":"Error, formulario incorrecto"})
+    
+    form = AuthenticationForm()
+   
+    return render(request,  "mi_app/login.html", {'form':form})
+
+
 
