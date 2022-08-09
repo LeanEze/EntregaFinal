@@ -3,14 +3,12 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from mi_app.forms import  RegistroForm, UserRegisterForm, adopcionFormulario, donacionesFormulario, transitoFormulario
 from mi_app.models import Adopcion, Donaciones, Transito
+from django.contrib.auth import login, logout,authenticate
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth.views import LoginView, LogoutView
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, logout, authenticate
 
 
 
@@ -268,7 +266,6 @@ def crear_usuario(request):
 
 
 
-
 def login_request(request):
    
     if request.method == 'POST':
@@ -299,7 +296,6 @@ def login_request(request):
 
 
 
-
 def register(request):
     
     if request.method == 'POST': 
@@ -314,3 +310,4 @@ def register(request):
         form = RegistroForm()
        
     return render (request, "mi_app/crearUsuario.html" , {"form" : form})
+

@@ -50,6 +50,7 @@ urlpatterns = [
 
     #Login
     path('login/',views.login_request, name='Login'),
+
     path('passwordReset/', views.password_reset, name='password_reset'), 
     
     
@@ -58,6 +59,7 @@ urlpatterns = [
     path('crearusuario/', crear_usuario, name= 'crearusuario'),
     path("login" , views.login_request, name = "login"), 
     path ("register" , views.register, name = "Register"), 
+
 
 
 

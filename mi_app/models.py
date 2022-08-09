@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
-from django.contrib.auth.forms import UserCreationForm
+
 
 class Adopcion(models.Model):
     nombre = models.CharField(max_length=40)
@@ -63,6 +63,13 @@ class Donaciones(models.Model):
 
 
 
-
-
+class Login(models.Model):
+    usuario = models.CharField(max_length=10)
+    contraseña = models.CharField(max_length=10)
+    
+    
+    def __str__(self):
+    
+     return f"Usuario: {self.usuario} - Contraseña: {self.contraseña}"
+ 
 
