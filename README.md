@@ -1,4 +1,13 @@
-# Entrega Final - Jamardo Leandro
+# Entrega Final - Jamardo Leandro - Leonardo Bonivardi -Lautaro Gomez
+
+*Desarrollo del trabajo
+
+Jamardo Leandro: index, padre, herencias de templates, barra head, footer historias, formulario de adopcion, formulario de transito, crud de transitantes, admin,
+                video de muestra, casos de prueba.
+
+Leonardo Bonivardi:herencia de templates, formulario de donaciones, login, creacion de usuario, logout, readme, nosotros.
+
+Lautaro Gomez: ...
 
 Casos de Prueba subido a drive: https://docs.google.com/spreadsheets/d/1wohcvRlL2IZVDLkYkIk9TTfMBMODlEZU/edit?usp=sharing&ouid=112502430981329478524&rtpof=true&sd=true
 
