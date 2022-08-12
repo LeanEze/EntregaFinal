@@ -3,8 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from mi_app.forms import  RegistroForm, UserRegisterForm, adopcionFormulario, donacionesFormulario, transitoFormulario
 from mi_app.models import Adopcion, Donaciones, Transito
-from django.contrib.auth import login, logout,authenticate
-from django.views.generic import ListView
+from django.contrib.auth import login, logout, authenticate
+from django.views.generic import ListView,TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
@@ -299,7 +299,7 @@ def login_request(request):
 def register(request):
     
     if request.method == 'POST': 
-        form = RegistroForm(request.POST)
+        form = UserRegisterForm(request.POST)
     
         if form.is_valid():            
             username = form.cleaned_data ["username"]
@@ -307,7 +307,18 @@ def register(request):
             return render (request, "mi_app/crearUsuario.html",{"mensaje":f"{username}, Usuario Creado :)"})
     
     else: 
-        form = RegistroForm()
+        form = UserRegisterForm()
        
     return render (request, "mi_app/crearUsuario.html" , {"form" : form})
 
+
+
+
+
+# class UserUpdate (LoginRequiredMixin, UpdateView) :
+#    model= User
+#    Template_name = "user_profile/user_form.html"
+#    fields = ["username", "email" "first_name", "last_name"]
+
+#         def get_success_url (self): 
+#           return reverse_lazy ("user-detail", kwargs= {"pk": self.request.user.id})

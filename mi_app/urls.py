@@ -3,8 +3,8 @@ from django.urls import path,include
 from mi_app import views
 from mi_app.views import adopcion_formulario, mostrar_inicio, mostrar_nosotros, respuesta_adopcion, respuesta_transito, transito_formulario
 from mi_app.views import password_reset_done
-from mi_app.views import adopcion_formulario, donaciones_formulario, mostrar_inicio, crear_usuario, respuesta_adopcion, respuesta_donaciones, respuesta_transito, transito_formulario
-
+from mi_app.views import donaciones_formulario, crear_usuario,  respuesta_donaciones
+from django.contrib.auth.views import LogoutView
 
 
 
@@ -14,9 +14,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',mostrar_inicio,name='raiz'),
     #rutas header
-    path('inicio/', mostrar_inicio, name='inicio'),
+    path('inicio/', views.mostrar_inicio, name='inicio'),
     path('adoptar/', adopcion_formulario, name='adoptar'),
-    path('transitar/', transito_formulario, name='transito'),
+    path('transitar/', transito_formulario, name='transitar'),
     path('donaciones/', donaciones_formulario, name='donaciones'),
     path('crearusuario/', crear_usuario, name= 'crearusuario'),
     path('passwordReset/', views.password_reset, name='password_reset'), 
@@ -49,19 +49,17 @@ urlpatterns = [
 
 
     #Login
-    path('login/',views.login_request, name='Login'),
-
     path('passwordReset/', views.password_reset, name='password_reset'), 
     
     
     #CrearUsuario
 
-    path('crearusuario/', crear_usuario, name= 'crearusuario'),
-    path("login" , views.login_request, name = "login"), 
-    path ("register" , views.register, name = "Register"), 
+    path('crearusuario', views.crear_usuario, name= 'crearusuario'),
+    path("login/" , views.login_request, name = "login"), 
+    path("register/" , views.register, name = "register"), 
+    path("logout/", LogoutView.as_view (template_name='mi_app/logout.html'), name = "logout")
 
-
-
+    # path ("user/<pk>/edit", UserUpdate.as_view(), name="user-update"),
 
 
 

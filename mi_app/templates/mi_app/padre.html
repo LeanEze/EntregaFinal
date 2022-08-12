@@ -3,15 +3,6 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %}</title>
-    </head>
-    <body>
-        {% block content %}
-    
-        {% endblock content %}
-    </body>
-    </html>
-<head>
-   
   {% load static %} <!--carga el static utilizado en el href--> 
   
   <meta charset="UTF-8">
@@ -74,20 +65,40 @@
   </a>
 
   <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-    <li><a href="http://127.0.0.1:8000/inicio/" class="nav-link px-2 link-dark">Inicio</a></li>
-    <li><a href="http://127.0.0.1:8000/adoptar/" class="nav-link px-2 link-dark">Adoptar</a></li>
-    <li><a href="http://127.0.0.1:8000/transitar" class="nav-link px-2 link-dark">Transitar</a></li>
-    <li><a href="http://127.0.0.1:8000/donaciones/" class="nav-link px-2 link-dark">Donaciones</a></li>
+    <li><a href="{%url 'inicio'%}" class="nav-link px-2 link-dark">Inicio</a></li>
+    <li><a href="{%url 'adoptar'%}" class="nav-link px-2 link-dark">Adoptar</a></li>
+    <li><a href="{%url 'transitar'%}" class="nav-link px-2 link-dark">Transitar</a></li>
+    <li><a href="{%url 'donaciones'%}" class="nav-link px-2 link-dark">Donaciones</a></li>
   </ul>
 
+  {% if not request.user.is_authenticated %}
   <div class="col-md-3 text-end">
-    <a href="http://127.0.0.1:8000/login/">
+    <a href="{%url 'login'%}">
         <button type="button" class="btn btn-outline-primary me-2">ingresar</button>
     </a>
-    <a href="http://127.0.0.1:8000/crearusuario/">
+  </div>
+  {%endif%} 
+    
+  {% if not request.user.is_authenticated %} 
+    <div class="col-md-3 text-end">
+    <a href="{%url 'register'%}">
     <button type="button" class="btn btn-primary">crear usuario</button>
     </a>
+    </div>
+  {%endif%}
+  
+
+
+{% if request.user.is_authenticated %}
+<div class="col-md-3 text-end"></div>
+<a href="{%url 'logout'%}">
+  <button type="button" class="btn btn-primary">Logout</button>
+  </a>
+
 </div>
+{%endif%}
+
+
 
 </header>
 
@@ -102,11 +113,15 @@
 <div class="container">
   <footer class="py-3 my-4">
     <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-      <li class="nav-item"><a href="http://127.0.0.1:8000/inicio/" class="nav-link px-2 text-muted">Inicio</a></li>
+      <li class="nav-item"><a href="{%url 'inicio'%}" class="nav-link px-2 text-muted">Inicio</a></li>
 
-      <li class="nav-item"><a href="http://127.0.0.1:8000/transitolist/" class="nav-link px-2 text-muted">Lista Transitantes</a></li>
-
-      <li class="nav-item"><a href="http://127.0.0.1:8000/nosotros/" class="nav-link px-2 text-muted">Nosotros</a></li>
+      {% if request.user.is_staff %}
+      
+      <li class="nav-item"><a href="{%url 'List'%}" class="nav-link px-2 text-muted">Lista Transitantes</a></li>
+      
+      {%endif%}
+      
+      <li class="nav-item"><a href="{%url 'nosotros'%}" class="nav-link px-2 text-muted">Nosotros</a></li>
     </ul>
     <p class="text-center text-muted">© 2020 Por Una Pata, ONG</p>
   </footer>
