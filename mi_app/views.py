@@ -1,8 +1,8 @@
 from urllib import request
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
-from mi_app.forms import  RegistroForm, UserRegisterForm, adopcionFormulario, donacionesFormulario, transitoFormulario
-from mi_app.models import Adopcion, Donaciones, Transito,User
+from mi_app.forms import  AvatarFormulario, RegistroForm, UserRegisterForm, adopcionFormulario, donacionesFormulario, transitoFormulario
+from mi_app.models import Adopcion, Avatar, Donaciones, Transito,User
 from django.contrib.auth import login, authenticate
 from django.views.generic import ListView,TemplateView
 from django.views.generic.detail import DetailView
@@ -10,7 +10,7 @@ from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.mixins import LoginRequiredMixin
-
+from django.contrib.auth.decorators import login_required
 
 
 # funciones de muestra de template del header
@@ -298,7 +298,7 @@ def login_request(request):
 
 def register(request):
     
-    if request.method == 'POST': 
+    if request.method == 'POST':
         form = UserRegisterForm(request.POST)
     
         if form.is_valid():            
@@ -315,20 +315,13 @@ def register(request):
 
 
 
-# class UserUpdate (LoginRequiredMixin, UpdateView) :
-#     model= User
-#     succes_url = "editarusuario"
-#     fields = ["username", "email", "first_name", "last_name"]
 
-#     def get_success_url (self): 
-#         return reverse_lazy ("user-detail", kwargs= {"pk": self.request.user.id})
 
 class UserList(ListView):
 
     model = User
     Template_name = "mi_app/user_list.html"
-    
-  
+   
 
 class UserDetalle(DetailView):
 
@@ -339,4 +332,26 @@ class UserUpdate(UpdateView):
 
     model = User
     success_url = "/userlist/"
-    fields = ['username', 'email', 'password1', 'last_name', 'first_name']
+    fields = ['username', 'email', 'last_name', 'first_name']
+
+
+@login_required
+def avatar(request):
+    avatares = Avatar.objects.filter(user=request.user.id)
+    return render(request,'mi_app/index.html', {"url":avatares[0].imagen.url})
+
+
+def agregarAvatar(request):
+    if request.method == 'POST':
+        miFormulario = AvatarFormulario(request.POST, request.FILES)
+        if miFormulario.is_valid():
+            u = User.objects.get(username=request.user)
+            avatar = Avatar (user=u,imagen=miFormulario.cleaned_data['imagen'])
+
+            avatar.save()
+
+            return render(request, "mi_app/index.html")
+
+    else:
+        miFormulario = AvatarFormulario()
+    return render(request, "mi_app/agregarAvatar.html", {"miFormulario": miFormulario})

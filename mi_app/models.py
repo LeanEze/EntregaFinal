@@ -73,3 +73,12 @@ class Login(models.Model):
      return f"Usuario: {self.usuario} - Contraseña: {self.contraseña}"
  
 
+class Avatar (models.Model): 
+  #vinculo con el usuario
+    user= models.ForeignKey (User, on_delete=models.CASCADE)
+  #Subcarpeta acatares de media :)
+    imagen = models.ImageField(upload_to = "avatares", null= True ,blank = True)
+
+    def __str__(self):
+    
+     return f"Usuario: {self.user} - {self.imagen}"

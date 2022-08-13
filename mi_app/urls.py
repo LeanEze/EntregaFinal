@@ -1,3 +1,4 @@
+import statistics
 from django.contrib import admin
 from django.urls import path,include
 from mi_app import views
@@ -5,7 +6,8 @@ from mi_app.views import adopcion_formulario, mostrar_inicio, mostrar_nosotros, 
 from mi_app.views import password_reset_done
 from mi_app.views import donaciones_formulario, crear_usuario,  respuesta_donaciones
 from django.contrib.auth.views import LogoutView
-
+from django.conf.urls.static import static
+from django.conf import settings
 
 
 
@@ -61,9 +63,14 @@ urlpatterns = [
     # path("editarusuario", views.UserUpdate.as_view(), name='editarusuario'),
 
 
-    path('userlist', views.UserList.as_view(), name='userlist'),
+    path('userlist/', views.UserList.as_view(), name='userlist'),
     path(r'^detalleuser/(?P<pk>\d+)$', views.UserDetalle.as_view(), name='userdetalle'),
     path('user/<pk>/edit', views.UserUpdate.as_view(), name='useredit'),
+    path('avatar/', views.avatar, name="avatar"),
+    path('agregarAvatar/', views.agregarAvatar, name="AgregarAvatar")
+
 ]
     
+#para las imagenes
 
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

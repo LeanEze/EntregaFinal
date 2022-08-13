@@ -85,3 +85,8 @@ class UserRegisterForm (UserCreationForm):
       model = User 
       fields = ["username", "email", "password1", "password2", "last_name", "first_name"]
       help_texts = {k:"" for k in fields}
+
+
+class AvatarFormulario(forms.Form):
+
+    imagen=forms.ImageField(label="ingresar una imagen para el avatar")
