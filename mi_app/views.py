@@ -2,14 +2,14 @@ from urllib import request
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from mi_app.forms import  RegistroForm, UserRegisterForm, adopcionFormulario, donacionesFormulario, transitoFormulario
-from mi_app.models import Adopcion, Donaciones, Transito
-from django.contrib.auth import login, logout, authenticate
+from mi_app.models import Adopcion, Donaciones, Transito,User
+from django.contrib.auth import login, authenticate
 from django.views.generic import ListView,TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
@@ -316,9 +316,27 @@ def register(request):
 
 
 # class UserUpdate (LoginRequiredMixin, UpdateView) :
-#    model= User
-#    Template_name = "user_profile/user_form.html"
-#    fields = ["username", "email" "first_name", "last_name"]
+#     model= User
+#     succes_url = "editarusuario"
+#     fields = ["username", "email", "first_name", "last_name"]
 
-#         def get_success_url (self): 
-#           return reverse_lazy ("user-detail", kwargs= {"pk": self.request.user.id})
+#     def get_success_url (self): 
+#         return reverse_lazy ("user-detail", kwargs= {"pk": self.request.user.id})
+
+class UserList(ListView):
+
+    model = User
+    Template_name = "mi_app/user_list.html"
+    
+  
+
+class UserDetalle(DetailView):
+
+    model = User
+    template_name ="mi_app/detalleUsuario.html"
+
+class UserUpdate(UpdateView):
+
+    model = User
+    success_url = "/userlist/"
+    fields = ['username', 'email', 'password1', 'last_name', 'first_name']

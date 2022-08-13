@@ -37,13 +37,13 @@ urlpatterns = [
     path('osito/', views.mostrar_osito, name='osito'),
     path('pantufla/', views.mostrar_pantufla, name='pantufla'),
     path('romarubio/', views.mostrar_romarubio, name='romarubio'),
+    path('chocolate/', views.mostrar_chocolate, name='chocolate'),
     
     #CRUD Transitantes
 
 
     path('transitolist/', views.TransitoList.as_view(), name='List'),
     path(r'^detalle/(?P<pk>\d+)$', views.TransitoDetalle.as_view(), name='Detalle'),
-    path(r'^nuevo$', views.TransitoCreacion.as_view(), name='Nuevo'),
     path(r'^editar/(?P<pk>\d+)$', views.TransitoUpdate.as_view(), name='Editar'),
     path(r'^borrar/(?P<pk>\d+)$', views.TransitoDelete.as_view(), name='Borrar'),
 
@@ -57,12 +57,13 @@ urlpatterns = [
     path('crearusuario', views.crear_usuario, name= 'crearusuario'),
     path("login/" , views.login_request, name = "login"), 
     path("register/" , views.register, name = "register"), 
-    path("logout/", LogoutView.as_view (template_name='mi_app/logout.html'), name = "logout")
-
-    # path ("user/<pk>/edit", UserUpdate.as_view(), name="user-update"),
-
+    path("logout/", LogoutView.as_view (template_name='mi_app/logout.html'), name = 'logout'),
+    # path("editarusuario", views.UserUpdate.as_view(), name='editarusuario'),
 
 
+    path('userlist', views.UserList.as_view(), name='userlist'),
+    path(r'^detalleuser/(?P<pk>\d+)$', views.UserDetalle.as_view(), name='userdetalle'),
+    path('user/<pk>/edit', views.UserUpdate.as_view(), name='useredit'),
 ]
     
 
