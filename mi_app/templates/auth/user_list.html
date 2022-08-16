@@ -25,9 +25,10 @@
         <b>Email: </b>{{ user.email}}</p>
         </li>
         <p>
-            <a href="{% url 'userdetalle' user.id %}">detalles</a>
+            <a href="{% url 'userdetalle' user.id %}">Detalles</a>
             <a href="{% url 'useredit' user.id %}">Editar</a>
             <a href="{% url 'AgregarAvatar' %}">Avatar</a>
+            <a href="{% url 'userdelete' user.id %}">Borrar</a>
         </p>
    
         

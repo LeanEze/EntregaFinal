@@ -10,17 +10,18 @@
 </div> 
 
 
-<div class="form2">
+<div class="form2">{% csrf_token %}
 
     
     <p>Username : {{ user.username }}</p>
-    <p>Apellido: {{ user.last_name}}</p>
-    <p>Edad: {{ user.first_name }}</p>
+    <p>Nombre: {{ user.last_name}}</p>
+    <p>Apellido: {{ user.first_name }}</p>
     <p>Email: {{ user.email }}</p>
     
 
+
     <p>
-        <a href="{% url 'userlist' %}">Regresar</a>
+    <a href="{% url 'userlist' %}">Regresar</a>
     </p>
   
     

@@ -74,10 +74,10 @@ class Login(models.Model):
  
 
 class Avatar (models.Model): 
-  #vinculo con el usuario
+  
     user= models.ForeignKey (User, on_delete=models.CASCADE)
-  #Subcarpeta acatares de media :)
-    imagen = models.ImageField(upload_to = "avatares", null= True ,blank = True)
+  
+    imagen = models.ImageField(upload_to = "avatares", null= True)
 
     def __str__(self):
     
