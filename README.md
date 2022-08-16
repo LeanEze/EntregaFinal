@@ -3,16 +3,15 @@
 *Desarrollo del trabajo
 
 Jamardo Leandro: index, padre, herencias de templates, barra head, footer historias, formulario de adopcion, formulario de transito, crud de transitantes, admin,
-                video de muestra, casos de prueba.
+                video de muestra, casos de prueba, login, creacion de usuario, logout, CRUD de usuarios, Avatar.
 
-Leonardo Bonivardi:herencia de templates, formulario de donaciones, login, creacion de usuario, logout, readme, nosotros.
+Leonardo Bonivardi:herencia de templates, formulario de donaciones, readme, nosotros.
 
 Lautaro Gomez: ...
 
-Casos de Prueba subido a drive: https://docs.google.com/spreadsheets/d/1wohcvRlL2IZVDLkYkIk9TTfMBMODlEZU/edit?usp=sharing&ouid=112502430981329478524&rtpof=true&sd=true
+--->Casos de Prueba subido a drive: https://docs.google.com/spreadsheets/d/1wohcvRlL2IZVDLkYkIk9TTfMBMODlEZU/edit?usp=sharing&ouid=112502430981329478524&rtpof=true&sd=true
 
-Video de muestra del trabajo: https://drive.google.com/file/d/1LTaUcvT2j4wKKYdyp8X8N22aX8ri3qBm/view?usp=sharing
-
+--->Video de muestra del trabajo: https://drive.google.com/file/d/1p93nmwmSpLwE3LoPTLUnppPwG215S-27/view?usp=sharing
 
 Esta aplicacion permite ingresar a un sitio web donde se pueden realizar las siguientes funciones:
 

@@ -60,15 +60,17 @@ urlpatterns = [
     path("login/" , views.login_request, name = "login"), 
     path("register/" , views.register, name = "register"), 
     path("logout/", LogoutView.as_view (template_name='mi_app/logout.html'), name = 'logout'),
-    # path("editarusuario", views.UserUpdate.as_view(), name='editarusuario'),
+    
 
 
     path('userlist/', views.UserList.as_view(), name='userlist'),
     path(r'^detalleuser/(?P<pk>\d+)$', views.UserDetalle.as_view(), name='userdetalle'),
     path('user/<pk>/edit', views.UserUpdate.as_view(), name='useredit'),
-    # path('avatar/', views.avatar, name="avatar"),
     path('agregarAvatar/', views.agregarAvatar, name="AgregarAvatar"),
-    path(r'^borraruser/(?P<pk>\d+)$', views.UserDelete.as_view(), name="userdelete")
+    path(r'^borraruser/(?P<pk>\d+)$', views.UserDelete.as_view(), name="userdelete"),
+    path('avatar/', views.avatar, name="avatar")
+
 ]
     
 
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

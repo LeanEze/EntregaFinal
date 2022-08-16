@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from mi_app.forms import  AvatarFormulario, RegistroForm, UserRegisterForm, adopcionFormulario, donacionesFormulario, transitoFormulario
 from mi_app.models import Adopcion, Avatar, Donaciones, Transito
 from django.contrib.auth import login, authenticate
-from django.views.generic import ListView,TemplateView
+from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from django.urls import reverse_lazy
@@ -346,10 +346,10 @@ class UserDelete(DeleteView):
     success_url = "/inicio/"
 
 
-# @login_required
-# def avatar(request):
-#     avatares = Avatar.objects.filter(user=request.user.id)
-#     return render(request,'mi_app/index.html', {"url":avatares[0].imagen.url})
+@login_required
+def avatar(request):
+    avatares = Avatar.objects.filter(user=request.user.id)
+    return render(request,'mi_app/index.html',{"url":avatares[0].imagen.url})
 
 
 def agregarAvatar(request):
@@ -360,8 +360,8 @@ def agregarAvatar(request):
             avatar = Avatar (user=u, imagen=miFormulario.cleaned_data['imagen'])
 
             avatar.save()
-
-            return render(request, "mi_app/index.html")
+            avatares = Avatar.objects.last()
+            return render(request, "mi_app/index.html", {"url":avatares.imagen.url})
 
     else:
         miFormulario = AvatarFormulario()

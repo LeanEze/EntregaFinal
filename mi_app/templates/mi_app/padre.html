@@ -90,9 +90,9 @@
  
   {% if request.user.is_authenticated%}
   <div class="col-md-3 text-end">
-    
-    <p style="color: red" > <img height="40px" src="{{user.Avatar.url}}"><b>Bienvenido, {{user.username}}  </b></p>
-    
+  
+  <p style="color: red" > <img height="40px" src="{{ url }}"> <b>Bienvenido, {{user.username}}  </b></p>
+     
   {%endif%}
 
 
